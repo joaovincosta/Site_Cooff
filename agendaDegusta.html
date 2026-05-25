@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CiOFF – Reserve sua Vaga</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;0,900;1,400;1,700&family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500;700&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body class="reserva-page">
+
+  <!-- ===== PAINEL ESQUERDO — FOTO ===== -->
+  <div class="reserva-photo-panel">
+    <div class="reserva-photo-overlay"></div>
+    <div class="reserva-photo-content">
+      <h1>
+        Degustação<br/>
+        <em>Guiada</em>
+      </h1>
+      <p>
+        Uma viagem de 2 horas explorando diferentes métodos
+        de extração, origens e notas aromáticas. Acompanhe a
+        jornada do grão à xícara e descubra um novo mundo de
+        sabores.
+      </p>
+    </div>
+  </div>
+
+  <!-- ===== PAINEL DIREITO — RESERVA ===== -->
+  <div class="reserva-form-panel">
+    <a href="#" class="back-arrow" aria-label="Voltar">→</a>
+
+    <h2 class="reserva-title">Reserve Sua Vaga</h2>
+
+    <!-- CALENDÁRIO -->
+    <div class="calendar">
+      <div class="calendar-header">
+        <span class="cal-month">Maio 2026</span>
+        <div class="cal-nav">
+          <button class="cal-btn" id="prevMonth">&#8249;</button>
+          <button class="cal-btn" id="nextMonth">&#8250;</button>
+        </div>
+      </div>
+      <div class="calendar-grid">
+        <span class="cal-weekday">DOM</span>
+        <span class="cal-weekday">LUN</span>
+        <span class="cal-weekday">MAR</span>
+        <span class="cal-weekday">MIE</span>
+        <span class="cal-weekday">JUE</span>
+        <span class="cal-weekday">VIE</span>
+        <span class="cal-weekday">SAB</span>
+      </div>
+      <div class="calendar-days" id="calendarDays"></div>
+    </div>
+
+    <!-- HORÁRIOS -->
+    <div class="reserva-section">
+      <p class="reserva-label">Horários Disponíveis</p>
+      <div class="time-slots">
+        <button class="time-slot active">13:00 - 15:00</button>
+        <button class="time-slot">13:00 - 15:00</button>
+      </div>
+    </div>
+
+    <!-- PARTICIPANTES -->
+    <div class="reserva-section reserva-row">
+      <div>
+        <p class="reserva-label">Participantes</p>
+        <p class="reserva-price-per">R$ 180,00 por pessoa</p>
+      </div>
+      <div class="counter">
+        <button class="counter-btn" id="decreaseBtn">−</button>
+        <span class="counter-value" id="counterValue">2</span>
+        <button class="counter-btn" id="increaseBtn">+</button>
+      </div>
+    </div>
+
+    <div class="reserva-divider"></div>
+
+    <!-- TERMOS -->
+    <label class="checkbox-row">
+      <input type="checkbox" id="termos" checked/>
+      <span class="checkbox-custom"></span>
+      <span class="checkbox-label">Concordo com os Termos de Serviço e Política de Privacidade</span>
+    </label>
+
+    <!-- TOTAL -->
+    <div class="reserva-total">
+      <p class="reserva-label">Total a Pagar</p>
+      <p class="total-value" id="totalValue">R$360,00</p>
+    </div>
+
+    <!-- BOTÃO -->
+    <button class="btn-submit">Finalizar Reserva</button>
+  </div>
+
+  <script>
+    /* ---- Calendário ---- */
+    let current = new Date(2026, 4, 1); // Maio 2026
+    let selectedDay = 5;
+
+    const monthNames = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho',
+                        'Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+
+    function renderCalendar() {
+      const year = current.getFullYear();
+      const month = current.getMonth();
+      document.querySelector('.cal-month').textContent = `${monthNames[month]} ${year}`;
+
+      const firstDay = new Date(year, month, 1).getDay();
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+      const prevDays = new Date(year, month, 0).getDate();
+
+      const grid = document.getElementById('calendarDays');
+      grid.innerHTML = '';
+
+      // dias do mês anterior
+      for (let i = firstDay - 1; i >= 0; i--) {
+        const d = document.createElement('button');
+        d.className = 'cal-day other-month';
+        d.textContent = prevDays - i;
+        grid.appendChild(d);
+      }
+
+      // dias do mês atual
+      for (let d = 1; d <= daysInMonth; d++) {
+        const btn = document.createElement('button');
+        btn.className = 'cal-day';
+        btn.textContent = d;
+        if (d === selectedDay) btn.classList.add('selected');
+        btn.addEventListener('click', () => {
+          selectedDay = d;
+          renderCalendar();
+        });
+        grid.appendChild(btn);
+      }
+
+      // completar última linha
+      const total = firstDay + daysInMonth;
+      const remaining = total % 7 === 0 ? 0 : 7 - (total % 7);
+      for (let d = 1; d <= remaining; d++) {
+        const btn = document.createElement('button');
+        btn.className = 'cal-day other-month';
+        btn.textContent = d;
+        grid.appendChild(btn);
+      }
+    }
+
+    document.getElementById('prevMonth').addEventListener('click', () => {
+      current.setMonth(current.getMonth() - 1);
+      renderCalendar();
+    });
+    document.getElementById('nextMonth').addEventListener('click', () => {
+      current.setMonth(current.getMonth() + 1);
+      renderCalendar();
+    });
+
+    renderCalendar();
+
+    /* ---- Time slots ---- */
+    document.querySelectorAll('.time-slot').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.time-slot').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+      });
+    });
+
+    /* ---- Contador + total ---- */
+    const PRICE = 180;
+    let participants = 2;
+
+    function updateTotal() {
+      document.getElementById('counterValue').textContent = participants;
+      const total = participants * PRICE;
+      document.getElementById('totalValue').textContent =
+        'R$' + total.toLocaleString('pt-BR', { minimumFractionDigits: 2 });
+    }
+
+    document.getElementById('increaseBtn').addEventListener('click', () => {
+      participants = Math.min(participants + 1, 10);
+      updateTotal();
+    });
+    document.getElementById('decreaseBtn').addEventListener('click', () => {
+      participants = Math.max(participants - 1, 1);
+      updateTotal();
+    });
+
+    updateTotal();
+  </script>
+</body>
+</html>

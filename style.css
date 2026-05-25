@@ -737,3 +737,631 @@
     .reveal-delay-1 { transition-delay: 0.1s; }
     .reveal-delay-2 { transition-delay: 0.2s; }
     .reveal-delay-3 { transition-delay: 0.3s; }
+
+    /* =====================================================
+   LOGIN PAGE — incremento para style.css
+   Depende das variáveis e reset já declarados na landing
+   ===================================================== */
+
+/* Novas variáveis exclusivas desta tela */
+:root {
+  --wine-panel:   #5C1122;
+  --input-bg:     rgba(255, 255, 255, 0.07);
+  --input-border: rgba(255, 255, 255, 0.18);
+  --input-focus:  rgba(201, 161, 74, 0.6);
+}
+
+/* Layout raiz da página de login */
+.login-page {
+  display: flex;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* ===== PAINEL ESQUERDO — FOTO ===== */
+.photo-panel {
+  flex: 0 0 60%;
+  position: relative;
+  overflow: hidden;
+}
+
+.photo-panel::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=80')
+    center / cover no-repeat;
+  filter: grayscale(60%) brightness(0.55);
+  transform: scale(1.04);
+  animation: slowZoom 14s ease-out forwards;
+}
+
+@keyframes slowZoom {
+  from { transform: scale(1.04); }
+  to   { transform: scale(1); }
+}
+
+.photo-panel::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, transparent 55%, var(--wine-panel) 100%),
+    linear-gradient(to top, rgba(45, 7, 16, 0.6) 0%, transparent 40%);
+}
+
+.photo-logo {
+  position: absolute;
+  bottom: 40px;
+  left: 48px;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.logo-mark {
+  width: 44px;
+  height: 44px;
+  opacity: 0.92;
+}
+
+.logo-wordmark {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 900;
+  letter-spacing: 6px;
+  color: var(--cream);
+}
+
+.logo-wordmark span { color: var(--gold); }
+
+/* ===== PAINEL DIREITO — FORMULÁRIO ===== */
+.form-panel {
+  flex: 0 0 40%;
+  background: var(--wine-panel);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 64px 56px;
+  position: relative;
+}
+
+.back-arrow {
+  position: absolute;
+  top: 36px;
+  right: 40px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--cream);
+  text-decoration: none;
+  font-size: 18px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.back-arrow:hover {
+  border-color: var(--gold);
+  background: rgba(201, 161, 74, 0.12);
+}
+
+.form-panel h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1;
+  margin-bottom: 12px;
+  animation: fadeUp 0.6s 0.1s both;
+}
+
+.form-panel .subtitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  margin-bottom: 36px;
+  animation: fadeUp 0.6s 0.2s both;
+}
+
+/* ===== BOTÃO GOOGLE ===== */
+.btn-google {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  width: 100%;
+  padding: 15px;
+  border-radius: 50px;
+  border: 1.5px solid rgba(255, 255, 255, 0.22);
+  background: transparent;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: border-color 0.25s, background 0.25s;
+  animation: fadeUp 0.6s 0.3s both;
+}
+
+.btn-google:hover {
+  border-color: var(--gold);
+  background: rgba(201, 161, 74, 0.08);
+}
+
+/* ===== DIVISOR "ou use seu email" ===== */
+.divider-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 28px 0 24px;
+  animation: fadeUp 0.6s 0.35s both;
+}
+
+.divider-row::before,
+.divider-row::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.18);
+}
+
+.divider-row span {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+/* ===== CAMPOS DO FORMULÁRIO ===== */
+.field {
+  margin-bottom: 20px;
+  animation: fadeUp 0.6s both;
+}
+
+.field:nth-child(1) { animation-delay: 0.4s; }
+.field:nth-child(2) { animation-delay: 0.48s; }
+
+.field label {
+  display: block;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 8px;
+}
+
+.field input {
+  width: 100%;
+  padding: 15px 20px;
+  border-radius: 50px;
+  border: 1.5px solid var(--input-border);
+  background: var(--input-bg);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.25s, background 0.25s;
+}
+
+.field input::placeholder { color: rgba(196, 160, 168, 0.55); }
+
+.field input:focus {
+  border-color: var(--input-focus);
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== LINK ESQUECEU SENHA ===== */
+.forgot-row {
+  text-align: right;
+  margin: -8px 0 28px;
+  animation: fadeUp 0.6s 0.52s both;
+}
+
+.forgot-row a {
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.forgot-row a:hover { color: var(--gold); }
+
+/* ===== BOTÃO ENTRAR ===== */
+.btn-submit {
+  width: 100%;
+  padding: 16px;
+  border-radius: 50px;
+  border: none;
+  background: var(--gold-light);
+  color: var(--wine-deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  animation: fadeUp 0.6s 0.56s both;
+}
+
+.btn-submit:hover {
+  background: #f5c96a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(240, 192, 106, 0.3);
+}
+
+.btn-submit:active { transform: translateY(0); }
+
+/* ===== LINK CRIAR CONTA ===== */
+.register-row {
+  text-align: center;
+  margin-top: 28px;
+  font-size: 13px;
+  color: var(--text-muted);
+  animation: fadeUp 0.6s 0.62s both;
+}
+
+.register-row a {
+  color: var(--gold-light);
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.2s;
+}
+
+.register-row a:hover { color: var(--cream); }
+
+/* =====================================================
+   RESERVA PAGE — incremento para style.css
+   Reutiliza: variáveis, reset, fadeUp, .back-arrow,
+   .btn-submit (redeclara só o necessário)
+   ===================================================== */
+
+/* ===== LAYOUT RAIZ ===== */
+.reserva-page {
+  display: flex;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ===== PAINEL ESQUERDO — FOTO ===== */
+.reserva-photo-panel {
+  flex: 0 0 60%;
+  position: relative;
+  overflow: hidden;
+  background:
+    url('https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1400&q=80')
+    center / cover no-repeat;
+}
+
+.reserva-photo-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(10, 4, 6, 0.78) 40%, rgba(92, 17, 34, 0.55) 100%),
+    linear-gradient(to top,   rgba(10, 4, 6, 0.6)  0%,  transparent 50%);
+}
+
+.reserva-photo-content {
+  position: relative;
+  z-index: 2;
+  padding: 72px 56px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  height: 100%;
+}
+
+.reserva-photo-content h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 6vw, 5rem);
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.05;
+  margin-bottom: 32px;
+  animation: fadeUp 0.7s 0.1s both;
+}
+
+.reserva-photo-content h1 em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.reserva-photo-content p {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: rgba(240, 230, 208, 0.8);
+  line-height: 1.75;
+  max-width: 480px;
+  animation: fadeUp 0.7s 0.25s both;
+}
+
+/* ===== PAINEL DIREITO — FORMULÁRIO ===== */
+.reserva-form-panel {
+  flex: 0 0 40%;
+  background: var(--wine-panel);
+  display: flex;
+  flex-direction: column;
+  padding: 56px 48px 48px;
+  position: relative;
+  overflow-y: auto;
+}
+
+.reserva-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 3vw, 2.6rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 28px;
+  animation: fadeUp 0.6s 0.1s both;
+}
+
+/* ===== CALENDÁRIO ===== */
+.calendar {
+  margin-bottom: 28px;
+  width: 80%;
+  animation: fadeUp 0.6s 0.2s both;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.cal-month {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--cream);
+  letter-spacing: 0.5px;
+}
+
+.cal-nav { display: flex; gap: 8px; }
+
+.cal-btn {
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 20px;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 6px;
+  transition: color 0.2s;
+}
+.cal-btn:hover { color: var(--gold-light); }
+
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.cal-weekday {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-align: center;
+  padding: 6px 0;
+}
+
+.calendar-days {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+}
+
+.cal-day {
+  aspect-ratio: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: var(--cream);
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.cal-day:hover:not(.other-month) {
+  background: rgba(201, 161, 74, 0.18);
+}
+
+.cal-day.other-month {
+  color: rgba(196, 160, 168, 0.3);
+  cursor: default;
+}
+
+.cal-day.selected {
+  background: var(--gold);
+  color: var(--wine-deep);
+  font-weight: 700;
+}
+
+/* ===== SEÇÕES GENÉRICAS DO FORM ===== */
+.reserva-section {
+  margin-bottom: 20px;
+  animation: fadeUp 0.6s 0.3s both;
+}
+
+.reserva-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.reserva-label {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 12px;
+}
+
+.reserva-price-per {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+.reserva-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.12);
+  margin: 4px 0 20px;
+}
+
+/* ===== TIME SLOTS ===== */
+.time-slots {
+  display: flex;
+  gap: 12px;
+}
+
+.time-slot {
+  flex: 1;
+  padding: 14px 12px;
+  border-radius: 2px;
+  border: 1.5px solid rgba(255, 255, 255, 0.18);
+  background: transparent;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.time-slot:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.time-slot.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(201, 161, 74, 0.08);
+}
+
+/* ===== CONTADOR ===== */
+.counter {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: var(--gold);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.counter-btn {
+  background: none;
+  border: none;
+  color: var(--wine-deep);
+  font-size: 20px;
+  font-weight: 700;
+  width: 36px;
+  height: 44px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+}
+.counter-btn:hover { background: rgba(0,0,0,0.1); }
+
+.counter-value {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--wine-deep);
+  padding: 0 12px;
+  min-width: 32px;
+  text-align: center;
+}
+
+/* ===== CHECKBOX ===== */
+.checkbox-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  cursor: pointer;
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s 0.4s both;
+}
+
+.checkbox-row input[type="checkbox"] { display: none; }
+
+.checkbox-custom {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border: 1.5px solid rgba(255,255,255,0.3);
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  transition: border-color 0.2s, background 0.2s;
+}
+
+.checkbox-row input:checked + .checkbox-custom {
+  background: var(--gold);
+  border-color: var(--gold);
+}
+
+.checkbox-row input:checked + .checkbox-custom::after {
+  content: '';
+  width: 5px;
+  height: 9px;
+  border: 2px solid var(--wine-deep);
+  border-top: none;
+  border-left: none;
+  transform: rotate(45deg) translate(-1px, -1px);
+  display: block;
+}
+
+.checkbox-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+/* ===== TOTAL ===== */
+.reserva-total {
+  margin-bottom: 24px;
+  animation: fadeUp 0.6s 0.45s both;
+}
+
+.total-value {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.4rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+/* ===== BOTÃO FINALIZAR (sobrescreve border-radius do padrão) ===== */
+.reserva-form-panel .btn-submit {
+  border-radius: 2px;
+  animation: fadeUp 0.6s 0.5s both;
+}
