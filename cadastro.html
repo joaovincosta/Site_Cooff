@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>COOFF – Login</title>
+  <title>COOFF – Cadastro</title>
   <link rel="stylesheet" href="style.css">
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Cormorant+Garamond:wght@300;400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
 </head>
@@ -26,8 +26,8 @@
   <div class="form-panel">
     <a href="index.html" class="back-arrow" aria-label="Voltar">→</a>
 
-    <h1>Login</h1>
-    <p class="subtitle">Preencha os dados abaixo.</p>
+    <h1>Criar conta</h1>
+    <p class="subtitle">Preencha os dados abaixo para começar.</p>
 
     <!-- Google -->
     <button class="btn-google">
@@ -43,6 +43,11 @@
     <div class="divider-row"><span>ou use seu email</span></div>
 
     <div class="field">
+      <label for="name">Nome completo</label>
+      <input id="email" type="email" placeholder="Ex:  Nicole Moura" autocomplete="email"/>
+    </div>
+
+    <div class="field">
       <label for="email">E-mail</label>
       <input id="email" type="email" placeholder="Ex:  modesto.m.nicole@gmail.com" autocomplete="email"/>
     </div>
@@ -52,14 +57,22 @@
       <input id="senha" type="password" value="•••••••••" autocomplete="current-password"/>
     </div>
 
-    <div class="forgot-row">
-      <a href="#">Esqueceu a senha?</a>
-    </div>
+    <label class="checkbox-row">
+      <input type="checkbox" id="termos" checked/>
+      <span class="checkbox-custom"></span>
+      <span class="checkbox-label">Concordo com os Termos de Serviço e Política de Privacidade</span>
+    </label>
 
-    <button class="btn-submit">Entrar</button>
+    <label class="checkbox-row">
+      <input type="checkbox" id="termos" checked/>
+      <span class="checkbox-custom"></span>
+      <span class="checkbox-label">Desejo receber novidades, ofertas do Clube Lima e convites para eventos exclusivos.</span>
+    </label>
+    
+    <button class="btn-submit">Finalizar cadastro</button>
 
     <p class="register-row">
-      Não tem uma conta? <a href="cadastro.html">Criar conta</a>
+      Já tem uma conta? <a href="login.html">Fazer login</a>
     </p>
   </div>
 

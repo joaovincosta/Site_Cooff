@@ -755,7 +755,7 @@
 .login-page {
   display: flex;
   min-height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 /* ===== PAINEL ESQUERDO — FOTO ===== */
