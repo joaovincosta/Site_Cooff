@@ -1724,6 +1724,493 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   .plano-valor { font-size: 2rem; }
 }
 
+/* =====================================================
+   CHECKOUT PAGE — incremento para style.css
+   Reutiliza do base:
+     - :root, reset, body, @keyframes
+     - nav, .nav-logo, .nav-links, .nav-actions, nav.scrolled
+     - footer, .footer-grid, .footer-brand, .footer-col,
+       .footer-bottom, .footer-social-label, .footer-social-icons
+   Não reutiliza .field/.field input (raio e estilo diferentes)
+   ===================================================== */
+
+/* ===== SHELL DA PÁGINA ===== */
+.checkout-page {
+  /* Scroll vertical livre — o conteúdo pode ser maior que a viewport */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Espaço para a navbar fixa */
+.checkout-shell {
+  display: grid;
+  grid-template-columns: 1fr auto 400px;
+  gap: 0;
+  flex: 1;
+  padding-top: var(--topbar-h);  /* compensa a navbar fixed */
+  max-width: 1160px;
+  margin: 0 auto;
+  width: 100%;
+  padding-left: 40px;
+  padding-right: 40px;
+  padding-bottom: 80px;
+  align-items: start;
+}
+
+/* ===== COLUNA ESQUERDA ===== */
+.checkout-left {
+  padding: 48px 48px 0 0;
+  min-width: 0;
+}
+
+/* Breadcrumb */
+.checkout-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  margin-bottom: 36px;
+}
+.checkout-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.checkout-breadcrumb a:hover { color: var(--gold); }
+.checkout-breadcrumb span { color: var(--cream); }
+.checkout-breadcrumb svg  { stroke: var(--text-muted); opacity: 0.5; flex-shrink: 0; }
+
+/* Seções do formulário */
+.checkout-section { margin-bottom: 40px; }
+
+.checkout-section-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 24px;
+}
+
+/* ===== CAMPOS DO CHECKOUT ===== */
+/* Estilo diferente dos .field do login (sem border-radius 50px) */
+.ck-field {
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.ck-field input,
+.ck-field select {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  outline: none;
+  transition: border-color 0.2s, background 0.2s;
+  appearance: none;
+  -webkit-appearance: none;
+}
+.ck-field input::placeholder { color: var(--text-muted); }
+.ck-field input:focus,
+.ck-field select:focus {
+  border-color: rgba(201,161,74,0.5);
+  background: rgba(255,255,255,0.08);
+}
+
+/* Seta do select */
+.ck-select-arrow {
+  position: absolute;
+  right: 14px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+  stroke: var(--text-muted);
+}
+
+/* Linhas de campos */
+.ck-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-bottom: 0;
+}
+.ck-row .ck-field { margin-bottom: 0; }
+
+.ck-row--3 {
+  grid-template-columns: 1fr 1fr 100px;
+}
+.ck-row--3 { margin-bottom: 12px; }
+
+/* Campo de estado mais estreito */
+.ck-field--state { min-width: 0; }
+
+/* Campo CEP com botão interno */
+.ck-field--cep {
+  position: relative;
+  margin-bottom: 12px;
+}
+.ck-field--cep input { padding-right: 100px; }
+.ck-cep-btn {
+  position: absolute;
+  right: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  padding: 8px 12px;
+  transition: color 0.2s;
+}
+.ck-cep-btn:hover { color: var(--gold-light); }
+
+/* ===== OPÇÕES DE FRETE ===== */
+.ck-frete {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 20px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.03);
+  cursor: pointer;
+  margin-bottom: 10px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ck-frete:hover { border-color: rgba(201,161,74,0.3); }
+.ck-frete input[type="radio"] { display: none; }
+
+/* Card ativo */
+.ck-frete--active {
+  border-color: rgba(201,161,74,0.45);
+  background: rgba(201,161,74,0.06);
+}
+
+/* Radio customizado */
+.ck-radio {
+  flex-shrink: 0;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s;
+}
+.ck-frete--active .ck-radio {
+  border-color: var(--gold);
+}
+.ck-frete--active .ck-radio::after {
+  content: '';
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--gold);
+}
+
+.ck-frete-info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+.ck-frete-nome {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+}
+.ck-frete-prazo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.9rem;
+  color: var(--text-muted);
+}
+.ck-frete-preco {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-muted);
+  white-space: nowrap;
+  margin-left: auto;
+}
+.ck-frete-preco--active { color: var(--gold); }
+
+/* ===== DIVISOR VERTICAL ===== */
+.checkout-divider {
+  width: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-top: var(--topbar-h);
+  align-self: stretch;
+}
+
+/* ===== COLUNA DIREITA: RESUMO ===== */
+.checkout-right {
+  padding: 48px 0 0 48px;
+  min-width: 0;
+}
+
+.checkout-resumo-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cream);
+  margin-bottom: 28px;
+}
+
+/* Itens do pedido */
+.ck-itens { display: flex; flex-direction: column; gap: 20px; margin-bottom: 24px; }
+
+.ck-item {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.ck-item-img {
+  position: relative;
+  flex-shrink: 0;
+  width: 52px;
+  height: 52px;
+  border-radius: 4px;
+  background: var(--wine-dark);
+  border: 1px solid rgba(201,161,74,0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ck-item-qty {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--gold);
+  color: var(--wine-deep);
+  font-size: 10px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ck-item-info { flex: 1; min-width: 0; }
+.ck-item-nome {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 2px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.ck-item-detalhe {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.88rem;
+  color: var(--text-muted);
+}
+
+.ck-item-preco {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+  white-space: nowrap;
+}
+
+/* Divisores internos */
+.ck-resumo-divider {
+  width: 100%;
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 20px 0;
+}
+
+/* Campo de cupom */
+.ck-cupom {
+  display: flex;
+  gap: 8px;
+}
+.ck-cupom-input {
+  flex: 1;
+  padding: 12px 16px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.14);
+  background: rgba(255,255,255,0.05);
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+.ck-cupom-input::placeholder { color: var(--text-muted); }
+.ck-cupom-input:focus { border-color: rgba(201,161,74,0.45); }
+
+.ck-cupom-btn {
+  padding: 12px 18px;
+  border-radius: 4px;
+  border: 1px solid rgba(255,255,255,0.2);
+  background: transparent;
+  color: var(--cream);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: border-color 0.2s, background 0.2s;
+}
+.ck-cupom-btn:hover { border-color: var(--gold); background: rgba(201,161,74,0.06); }
+
+/* Linhas de subtotal/frete */
+.ck-totais { display: flex; flex-direction: column; gap: 10px; }
+.ck-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Total final */
+.ck-total-final {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+.ck-total-final-left {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.ck-total-label {
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+.ck-total-moeda {
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  color: var(--text-muted);
+  text-align: right;
+}
+.ck-total-valor {
+  font-family: 'Playfair Display', serif;
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+}
+
+/* Botão de pagamento */
+.ck-btn-pagar {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 16px 24px;
+  border-radius: 4px;
+  border: none;
+  background: var(--gold-light);
+  color: var(--wine-deep);
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  margin-bottom: 12px;
+}
+.ck-btn-pagar:hover {
+  background: #f5c96a;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 32px rgba(240,192,106,0.28);
+}
+.ck-btn-pagar:active { transform: translateY(0); }
+
+.ck-seguro {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  text-align: center;
+  line-height: 1.5;
+}
+
+/* ===== FOOTER DO CHECKOUT ===== */
+/*
+  Footer com fundo mais escuro (wine-deep → dark),
+  grid de 3 colunas e logo maior.
+*/
+.checkout-footer {
+  background: var(--dark);
+  border-top: 1px solid rgba(201,161,74,0.12);
+  padding: 60px 40px 40px;
+}
+
+.checkout-footer-grid {
+  grid-template-columns: 1.4fr 1fr 1fr;
+  max-width: 1160px;
+  margin-bottom: 0;
+}
+
+.checkout-footer-logo {
+  font-size: 32px;
+  letter-spacing: 6px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Reutiliza .footer-social-label e .footer-social-icons da assinatura */
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) {
+  .checkout-shell {
+    grid-template-columns: 1fr;
+    padding: calc(var(--topbar-h) + 32px) 24px 48px;
+  }
+
+  .checkout-divider { display: none; }
+
+  .checkout-left  { padding: 0; }
+  .checkout-right { padding: 0; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 40px; margin-top: 8px; }
+
+  /* No mobile o resumo sobe para antes do formulário */
+  .checkout-shell { display: flex; flex-direction: column-reverse; }
+  .checkout-right { order: -1; }
+}
+
+@media (max-width: 600px) {
+  .ck-row     { grid-template-columns: 1fr; }
+  .ck-row--3  { grid-template-columns: 1fr 1fr; }
+  .ck-row--3 .ck-field--state { grid-column: span 1; }
+
+  .checkout-footer-grid { grid-template-columns: 1fr; gap: 32px; }
+}
+
 /* ============================================================
    RESPONSIVIDADE
    Breakpoint único em 900px: split-screen vira coluna.
