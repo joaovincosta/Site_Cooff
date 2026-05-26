@@ -749,6 +749,602 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 .dash-order-date-inline { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--text-muted); }
 .dash-order-status-done { font-size: 9px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-top: 3px; }
 
+/* =====================================================
+   AULA PAGE — incremento para style.css
+   Reutiliza do base:
+     - variáveis (:root), reset, body
+     - @keyframes fadeUp
+     - .dash-topbar, .dash-logo, .dash-nav,
+       .dash-topbar-actions, .dash-icon-btn
+     - .dash-layout (shell sidebar + main)
+     - .dash-progress-bar, .dash-progress-fill
+     - .btn, .btn-submit
+   ===================================================== */
+
+/* ===== SHELL DA PÁGINA ===== */
+/*
+  Reutiliza .dashboard-page para o mesmo comportamento
+  app-shell (topbar fixa, área central scrollável).
+  Adicionamos .aula-page como alias para semântica.
+*/
+.aula-page {
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== SIDEBAR DO CURSO ===== */
+/*
+  Sidebar mais estreita que a do dashboard (260px → igual),
+  mas com layout completamente diferente internamente.
+  Reusa .dash-layout para o posicionamento, mas define
+  sua própria estrutura interna.
+*/
+.curso-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  min-height: 0;
+  background: var(--wine-dark);
+  border-right: 1px solid rgba(201,161,74,0.1);
+  display: flex;
+  flex-direction: column;
+  padding: 0 0 28px;
+  overflow-y: auto;
+}
+
+/* Voltar */
+.curso-back {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 20px 24px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  transition: color 0.2s;
+}
+.curso-back:hover { color: var(--gold); }
+.curso-back svg   { flex-shrink: 0; stroke: currentColor; }
+
+/* Info do curso */
+.curso-info {
+  padding: 24px 24px 0;
+}
+.curso-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  font-weight: 900;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 6px;
+}
+.curso-turma {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* Progresso do curso */
+.curso-progresso {
+  padding: 20px 24px 24px;
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+.curso-progresso-header {
+  display: flex;
+  justify-content: space-between;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+/* Módulos */
+.curso-modulos { padding: 24px 0; flex: 1; }
+.curso-modulos-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  padding: 0 24px;
+  margin-bottom: 12px;
+}
+
+.modulo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 14px 24px;
+  cursor: pointer;
+  transition: background 0.2s;
+  border-left: 3px solid transparent;
+}
+.modulo-item:hover { background: rgba(201,161,74,0.05); }
+
+/* Estados dos módulos */
+.modulo-done   { opacity: 0.75; }
+.modulo-locked { opacity: 0.4; cursor: not-allowed; }
+.modulo-active {
+  background: rgba(201,161,74,0.08);
+  border-left-color: var(--gold);
+  opacity: 1;
+}
+
+.modulo-icon {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(255,255,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 1px;
+  color: var(--text-muted);
+}
+.modulo-done .modulo-icon {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--wine-deep);
+}
+.modulo-active .modulo-icon {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.modulo-meta {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 3px;
+}
+.modulo-nome {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--cream);
+  line-height: 1.3;
+  margin-bottom: 3px;
+}
+.modulo-active .modulo-nome { color: var(--cream); }
+.modulo-detalhe {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* Suporte */
+.curso-suporte {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 16px 24px;
+  margin: 0 16px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: background 0.2s, color 0.2s;
+}
+.curso-suporte:hover { background: rgba(201,161,74,0.08); color: var(--cream); }
+.curso-suporte svg   { flex-shrink: 0; stroke: currentColor; }
+
+/* ===== ÁREA PRINCIPAL DA AULA ===== */
+.aula-main {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: var(--wine-deep);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Topbar interna (breadcrumb + ações) */
+.aula-topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 32px;
+  background: var(--wine-dark);
+  border-bottom: 1px solid rgba(201,161,74,0.08);
+  flex-shrink: 0;
+}
+
+.aula-breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+.aula-breadcrumb a {
+  color: var(--text-muted);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+.aula-breadcrumb a:hover { color: var(--gold); }
+.aula-breadcrumb span    { color: var(--cream); }
+.aula-breadcrumb svg     { opacity: 0.4; flex-shrink: 0; stroke: var(--text-muted); }
+
+.aula-topbar-actions { display: flex; gap: 8px; }
+/* Reutiliza estilo visual do dash-icon-btn mas sem border */
+.aula-icon-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.2s, color 0.2s;
+}
+.aula-icon-btn:hover { border-color: var(--gold); color: var(--gold); }
+
+/* ===== PLAYER DE VÍDEO ===== */
+.video-player {
+  position: relative;
+  background: #000;
+  /* Proporção 16:9 responsiva */
+  aspect-ratio: 16 / 9;
+  flex-shrink: 0;
+  /* Limita altura para não ocupar tudo em telas altas */
+  max-height: 60vh;
+  overflow: hidden;
+}
+
+.video-thumb {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: brightness(0.65) sepia(20%);
+}
+
+.video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(20,6,10,0.25);
+}
+
+.video-play-btn {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: rgba(201,161,74,0.85);
+  border: none;
+  color: var(--wine-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, transform 0.2s;
+  padding-left: 4px; /* compensa o triângulo visualmente */
+}
+.video-play-btn:hover { background: var(--gold); transform: scale(1.08); }
+
+/* Controles na base do player */
+.video-controls {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 20px;
+  background: linear-gradient(to top, rgba(10,4,6,0.95) 0%, transparent 100%);
+}
+
+.video-ctrl-btn {
+  background: none;
+  border: none;
+  color: var(--cream);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.8;
+  transition: opacity 0.2s;
+  flex-shrink: 0;
+}
+.video-ctrl-btn:hover { opacity: 1; }
+
+.video-time {
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--cream);
+  white-space: nowrap;
+  letter-spacing: 0.5px;
+}
+
+.video-progress {
+  flex: 1;
+  height: 4px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 2px;
+  position: relative;
+  cursor: pointer;
+}
+.video-progress-fill {
+  height: 100%;
+  background: var(--gold);
+  border-radius: 2px;
+  position: relative;
+}
+.video-progress-thumb {
+  position: absolute;
+  right: -5px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 10px;
+  height: 10px;
+  background: var(--gold);
+  border-radius: 50%;
+}
+
+/* ===== GRID INFERIOR: CONTEÚDO + SIDEBAR DIREITA ===== */
+.aula-content-grid {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+}
+
+/* Coluna esquerda */
+.aula-content-left {
+  padding: 32px 40px 48px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  overflow-y: auto;
+  min-height: 0;
+}
+
+/* Tabs de navegação */
+.aula-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid rgba(255,255,255,0.08);
+  margin-bottom: 28px;
+}
+.aula-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  padding: 12px 20px 12px 0;
+  margin-bottom: -1px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.aula-tab:hover  { color: var(--cream); }
+.aula-tab.active { color: var(--cream); border-bottom-color: var(--gold); }
+
+/* Painéis de conteúdo */
+.aula-tab-panel         { display: none; }
+.aula-tab-panel.active  { display: block; }
+
+.aula-titulo-conteudo {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  font-style: italic;
+  color: var(--cream);
+  line-height: 1.2;
+  margin-bottom: 20px;
+}
+.aula-corpo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: rgba(240,230,208,0.8);
+  line-height: 1.8;
+  margin-bottom: 20px;
+  max-width: 640px;
+}
+
+/* Card do instrutor */
+.aula-instrutor {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 24px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(201,161,74,0.12);
+  border-radius: 4px;
+  margin-top: 8px;
+  max-width: 480px;
+}
+.aula-instrutor-avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  object-fit: cover;
+  filter: sepia(15%) brightness(0.9);
+  flex-shrink: 0;
+}
+.aula-instrutor-nome {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--cream);
+  margin-bottom: 3px;
+}
+.aula-instrutor-cargo {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+/* ===== SIDEBAR DIREITA (ações + arquivos) ===== */
+.aula-content-right {
+  padding: 28px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  background: var(--wine-dark);
+}
+
+/* Botão "Marcar como Concluída" — sobrescreve border-radius do btn-submit */
+.aula-btn-concluida {
+  border-radius: 2px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  animation: none; /* remove o fadeUp do btn-submit base */
+  font-size: 11px;
+  letter-spacing: 2px;
+}
+.aula-btn-concluida.concluida {
+  background: var(--wine);
+  color: var(--gold-light);
+}
+
+/* Botão "Próxima Aula" */
+.aula-btn-proxima {
+  width: 100%;
+  justify-content: center;
+  background: transparent;
+  color: var(--cream);
+  border: 1px solid rgba(255,255,255,0.2);
+  padding: 14px 20px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  transition: border-color 0.2s, background 0.2s;
+}
+.aula-btn-proxima:hover { border-color: var(--gold); background: rgba(201,161,74,0.06); }
+.aula-btn-proxima svg   { stroke: currentColor; margin-left: 4px; }
+
+/* Bloco de arquivos */
+.aula-arquivos {
+  border: 1px solid rgba(201,161,74,0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  margin-top: 4px;
+}
+.aula-arquivos-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 14px 16px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  border-bottom: 1px solid rgba(201,161,74,0.12);
+}
+.aula-arquivos-label svg { stroke: var(--gold); flex-shrink: 0; }
+
+.aula-arquivo-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,255,255,0.05);
+  transition: background 0.2s, color 0.2s;
+  line-height: 1.4;
+}
+.aula-arquivo-item:last-child { border-bottom: none; }
+.aula-arquivo-item:hover { background: rgba(201,161,74,0.06); color: var(--cream); }
+.aula-arquivo-item svg { stroke: currentColor; flex-shrink: 0; margin-top: 2px; }
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 1024px) {
+  .aula-content-grid {
+    grid-template-columns: 1fr; /* sidebar direita vai para baixo */
+  }
+  .aula-content-right {
+    border-top: 1px solid rgba(255,255,255,0.06);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 24px 40px;
+    background: var(--wine-dark);
+  }
+  .aula-btn-concluida,
+  .aula-btn-proxima { flex: 1; min-width: 160px; }
+  .aula-arquivos    { flex: 100%; }
+}
+
+@media (max-width: 768px) {
+  .aula-page { height: auto; overflow: visible; }
+  .dash-layout { flex-direction: column; height: auto; overflow: visible; }
+
+  .curso-sidebar {
+    width: 100%;
+    overflow-y: visible;
+    overflow-x: auto;
+    border-right: none;
+    border-bottom: 1px solid rgba(201,161,74,0.1);
+  }
+
+  .curso-modulos-label { display: none; }
+
+  .curso-modulos {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    padding: 0 8px;
+    gap: 4px;
+  }
+  .modulo-item {
+    flex-direction: column;
+    align-items: center;
+    padding: 10px 12px;
+    min-width: 120px;
+    border-left: none;
+    border-bottom: 3px solid transparent;
+    text-align: center;
+    gap: 6px;
+  }
+  .modulo-active { border-bottom-color: var(--gold); }
+
+  .aula-main { overflow-y: visible; }
+  .aula-content-left { padding: 24px 20px 32px; }
+
+  .video-player { max-height: 50vw; }
+
+  .aula-content-right {
+    padding: 20px;
+    flex-direction: column;
+  }
+  .aula-btn-concluida,
+  .aula-btn-proxima { width: 100%; }
+}
+
 /* ============================================================
    RESPONSIVIDADE
    Breakpoint único em 900px: split-screen vira coluna.
