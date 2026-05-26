@@ -1345,6 +1345,385 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   .aula-btn-proxima { width: 100%; }
 }
 
+/* =====================================================
+   ASSINATURA PAGE — incremento para style.css
+   Reutiliza do base:
+     - :root, reset, body, @keyframes
+     - nav, .nav-logo, .nav-links, .nav-actions
+     - .section-label, .tag, .btn, .btn-gold, .btn-outline
+     - .reveal, .reveal-delay-*
+     - footer, .footer-grid, .footer-brand, .footer-col,
+       .footer-bottom, .nav-logo, .social-links
+     - .container
+   ===================================================== */
+
+/* ===== HERO DA ASSINATURA ===== */
+.clube-hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: flex-end;
+  overflow: hidden;
+}
+
+.clube-hero-bg {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(10,4,6,0.88) 45%, transparent 75%),
+    linear-gradient(to top,   var(--wine-deep)   0%, transparent 50%),
+    url('https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=1600&q=80')
+    center / cover no-repeat;
+  animation: heroZoom 14s ease-out forwards;
+}
+
+.clube-hero-content {
+  position: relative;
+  z-index: 2;
+  padding: 140px 80px 100px;
+  max-width: 600px;
+  animation: fadeUp 0.9s 0.2s both;
+}
+
+.clube-hero-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(3rem, 7vw, 5.5rem);
+  font-weight: 900;
+  line-height: 1;
+  letter-spacing: -1px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin: 16px 0 24px;
+}
+.clube-hero-title em {
+  font-style: normal;           /* título em caps, itálico seria conflito */
+  color: var(--gold);
+}
+
+.clube-hero-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.1rem;
+  color: rgba(240,230,208,0.75);
+  line-height: 1.75;
+  max-width: 380px;
+  margin-bottom: 40px;
+}
+
+.clube-hero-cta {
+  padding: 16px 36px;
+  font-size: 11px;
+  letter-spacing: 2.5px;
+}
+
+/* ===== COMO FUNCIONA ===== */
+.clube-como {
+  background: var(--wine);
+  padding: 96px 0 100px;
+}
+
+.clube-como-header {
+  text-align: center;
+  margin-bottom: 64px;
+}
+
+.clube-como-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--cream);
+  line-height: 1.1;
+}
+
+.clube-como-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 48px;
+  /* A linha conectora é um pseudo-elemento do container */
+  position: relative;
+}
+
+/*
+  Linha horizontal que passa pelo centro dos ícones.
+  Posicionada a 34px do topo do grid (metade de 68px = raio do ícone).
+  Vai de ~16% a ~84% da largura para não ultrapassar os ícones externos.
+*/
+.clube-como-grid::before {
+  content: '';
+  position: absolute;
+  /*
+    top: 34px = metade do ícone (68px / 2).
+    A linha precisa ficar ATRÁS dos ícones (z-index: 0) e
+    ir de borda a borda do grid; deixamos 16%/16% de recuo
+    para não sobrar além dos círculos externos.
+  */
+  top: 34px;
+  left: 16%;
+  right: 16%;
+  height: 1px;
+  background: rgba(201, 161, 74, 0.3);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.clube-passo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 20px;
+  position: relative; /* garante que o ícone fique sobre a linha */
+  z-index: 1;
+}
+
+.clube-passo-icon {
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(201,161,74,0.45);
+  /* Fundo sólido para cobrir a linha atrás */
+  background: #5A1220;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+  position: relative; /* fica sobre o ::before do pai */
+  transition: background 0.3s, border-color 0.3s;
+}
+.clube-passo:hover .clube-passo-icon {
+  background: #6B1A2A;
+  border-color: var(--gold);
+}
+
+.clube-passo-titulo {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  font-style: italic;
+  color: var(--cream);
+}
+
+.clube-passo-desc {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+  line-height: 1.7;
+  max-width: 260px;
+}
+
+/* ===== PLANOS ===== */
+.clube-planos {
+  background: var(--wine-dark);
+  padding: 100px 0 120px;
+}
+
+.clube-planos-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.clube-planos-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 5vw, 3.2rem);
+  font-weight: 900;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--cream);
+  margin-bottom: 16px;
+}
+
+.clube-planos-sub {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  max-width: 420px;
+  margin: 0 auto;
+  line-height: 1.6;
+}
+
+.planos-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+/* Card base */
+.plano-card {
+  position: relative;
+  background: var(--wine);
+  border: 1px solid rgba(201,161,74,0.15);
+  border-radius: 4px;
+  padding: 40px 36px 36px;
+  display: flex;
+  flex-direction: column;
+  gap: 28px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.plano-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 24px 64px rgba(0,0,0,0.4);
+}
+
+/* Card em destaque */
+.plano-card--destaque {
+  border-color: var(--gold);
+  background: var(--wine-panel);
+}
+
+/* Badge "Recomendado" */
+.plano-badge {
+  position: absolute;
+  top: -1px;
+  right: 24px;
+  background: var(--gold);
+  color: var(--wine-deep);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border-radius: 0 0 4px 4px;
+}
+
+.plano-card-header { display: flex; flex-direction: column; gap: 6px; }
+
+.plano-nome {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--cream);
+}
+
+.plano-quantidade {
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.plano-preco {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+  margin-top: 8px;
+}
+.plano-valor {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.6rem;
+  font-weight: 700;
+  color: var(--cream);
+  line-height: 1;
+}
+.plano-period {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: var(--text-muted);
+}
+
+/* Lista de benefícios */
+.plano-lista {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  flex: 1;
+}
+.plano-lista li {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem;
+  color: rgba(240,230,208,0.85);
+  line-height: 1.4;
+}
+.plano-lista li svg {
+  flex-shrink: 0;
+  stroke: var(--gold);
+  margin-top: 2px;
+}
+
+/* Botão dentro do card */
+.plano-btn {
+  width: 100%;
+  justify-content: center;
+  padding: 15px;
+  font-size: 11px;
+  letter-spacing: 2px;
+  margin-top: auto;
+}
+
+/* ===== ILUSTRAÇÃO SVG ===== */
+.clube-ilustracao {
+  background: var(--wine-dark);
+  overflow: hidden;
+  line-height: 0;
+}
+.clube-svg {
+  width: 100%;
+  height: auto;
+  display: block;
+  max-height: 340px;
+}
+
+/* ===== AJUSTE NO FOOTER (social sem lista, sem h5) ===== */
+/*
+  Nesta página o footer tem 3 colunas: brand | links | social.
+  Sobrescrevemos só o grid e adicionamos os estilos de social
+  que não existem no base (ícones SVG em vez de texto).
+*/
+.clube-planos ~ footer .footer-grid {
+  grid-template-columns: 1.4fr 1fr 1fr;
+}
+
+.footer-social-label {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 0.95rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+  margin-bottom: 20px;
+}
+
+.footer-social-icons {
+  display: flex;
+  gap: 16px;
+}
+.footer-social-icons a {
+  color: var(--text-muted);
+  transition: color 0.2s;
+  display: flex;
+}
+.footer-social-icons a:hover { color: var(--gold); }
+
+/* ===== RESPONSIVIDADE ===== */
+@media (max-width: 900px) {
+  .clube-hero-content { padding: 120px 40px 80px; }
+
+  .clube-como-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+
+  .planos-grid {
+    grid-template-columns: 1fr;
+    max-width: 480px;
+  }
+}
+
+@media (max-width: 600px) {
+  .clube-hero-content { padding: 100px 24px 64px; }
+  .clube-hero-title   { font-size: clamp(2.4rem, 12vw, 3.5rem); }
+
+  .clube-como  { padding: 64px 0; }
+  .clube-planos { padding: 64px 0 80px; }
+
+  .plano-card  { padding: 32px 24px 28px; }
+  .plano-valor { font-size: 2rem; }
+}
+
 /* ============================================================
    RESPONSIVIDADE
    Breakpoint único em 900px: split-screen vira coluna.
