@@ -160,7 +160,7 @@ h2.section-title em { font-style: italic; color: var(--gold); }
   letter-spacing: 3px;
   text-transform: uppercase;
   cursor: pointer;
-  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+  transition: transform 0.2s, box-shadow 0.25s;
   animation: fadeUp 0.6s 0.56s both;
 }
 .btn-submit:hover  { background: #f5c96a; transform: translateY(-2px); box-shadow: 0 10px 32px rgba(240,192,106,0.3); }
@@ -186,7 +186,7 @@ h2.section-title em { font-style: italic; color: var(--gold); }
   color: var(--cream);
   text-decoration: none;
   font-size: 18px;
-  transition: border-color 0.2s, background 0.2s;
+  transition: border-color 0.2s;
 }
 .back-arrow:hover { border-color: var(--gold); background: rgba(201,161,74,0.12); }
 
@@ -207,7 +207,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(to bottom, rgba(26,10,13,0.95) 0%, transparent 100%);
-  transition: background 0.3s;
+
 }
 nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 
@@ -238,7 +238,7 @@ nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 .hero-content { text-align: center; ;position: relative; z-index: 2; padding: 0 40px 100px; max-width: 900px; animation: fadeUp 1s 0.3s both; }
 .hero-content h1 { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 4rem); font-weight: 600; line-height: 1.1; color: var(--cream); margin-bottom: 24px; }
 .hero-content h1 em { color: rgba(223, 140, 64, 1); }
-.hero-content p { margin: auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #ffffff line-height: 1.2; max-width: 650px; }
+.hero-content p { margin: auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #ffffff ; line-height: 1.2; max-width: 650px; }
 .hero-badges { display: flex; gap: 32px; margin-top: 48px; }
 .hero-badge { text-align: center; display: flex; flex-direction: column; }
 .hero-badge strong { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); }
@@ -306,20 +306,20 @@ nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 
 .section-cursos { padding: 100px 0; background: var(--wine-dark); }
 .cursos-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-top: 48px; }
-.curso-card { position: relative; border-radius: 2px; overflow: hidden; height: 320px; }
-.curso-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s; filter: sepia(20%) brightness(0.7); }
+.curso-card { position: relative; border-radius: 2px; overflow: hidden; width: auto;  height: 600px; border: 1px solid rgba(223, 140, 64, 1);}
+.curso-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.5s;}
 .curso-card:hover img { transform: scale(1.05); }
 .curso-card-overlay { position: absolute; inset: 0; background: linear-gradient(to top, var(--wine-deep) 0%, transparent 60%); display: flex; flex-direction: column; justify-content: flex-end; padding: 32px; }
-.curso-card-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--cream); margin-bottom: 8px; }
-.curso-card-overlay p  { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
+.curso-card-overlay h3 { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--cream); margin-bottom: 8px; }
+.curso-card-overlay p  { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--text-muted); margin-bottom: 16px; }
 
-#barista { padding: 100px 0; }
+#barista { padding: 100px 0; background: var(--wine-dark); }
 .barista-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
 .barista-post { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
 .barista-post img { width: 100%; height: 380px; object-fit: cover; border-radius: 2px; filter: sepia(10%) brightness(0.85); }
-.barista-text .post-meta { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
+.barista-text .post-meta { font-size: 18px; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 16px; }
 .barista-text h3 { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-style: italic; color: var(--cream); margin-bottom: 16px; line-height: 1.3; }
-.barista-text p  { font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; color: var(--text-muted); line-height: 1.8; margin-bottom: 24px; }
+.barista-text p  { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--text-muted); line-height: 1.5; margin-bottom: 24px; }
 
 #visit { position: relative; height: 60vh; min-height: 420px; overflow: hidden; }
 .visit-bg { position: absolute; inset: 0; background: linear-gradient(to right, var(--overlay) 40%, transparent 80%), url('https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=1400&q=80') center/cover no-repeat; }
@@ -424,7 +424,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   color: var(--cream);
   font-size: 14px;
   cursor: pointer;
-  transition: border-color 0.25s, background 0.25s;
+  transition: border-color 0.25s;
   animation: fadeUp 0.6s 0.3s both;
 }
 .btn-google:hover { border-color: var(--gold); background: rgba(201,161,74,0.08); }
