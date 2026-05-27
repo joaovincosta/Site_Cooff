@@ -11,7 +11,9 @@
 
   <!-- ===== NAVBAR ===== -->
   <nav id="navbar">
-    <a href="#" class="nav-logo">Ci<span>O</span>FF</a>
+    <a href="#" class="nav-logo">
+      <img src="img/logo.svg" alt="logo COOFF" style="max-width: 100px;">
+    </a>
     <ul class="nav-links">
       <li><a href="#historia">Nossa História</a></li>
       <li><a href="#">Cafés</a></li>
@@ -34,11 +36,11 @@
       <p class="section-label">Especialidade desde 2018</p>
       <h1>Onde Cada Xícara<br/><em>Conta Uma História</em></h1>
       <p>Grãos selecionados das melhores origens do mundo, torrados com precisão artesanal para revelar o que cada terroir tem de mais precioso.</p>
-      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+      <div style="display:flex; gap:16px; justify-content: center; margin-top: 20px; ">
         <a href="#" class="btn btn-gold">Explorar Cafés →</a>
         <a href="#historia" class="btn btn-outline">Nossa Jornada</a>
       </div>
-      <div class="hero-badges">
+      <div class="hero-badges" style="display:flex; gap:16px; justify-content: center; margin-top: 30px; ">
         <div class="hero-badge">
           <strong>+40</strong>
           <span>Origens</span>
@@ -58,25 +60,24 @@
   <!-- ===== NOSSA HISTÓRIA ===== -->
   <section id="historia">
     <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
-      <div class="img-collage reveal">
-        <img class="img-main" src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&q=80" alt="Café sendo preparado"/>
-        <img class="img-small" src="https://images.unsplash.com/photo-1559496417-e7f25cb247f3?w=600&q=80" alt="Grãos de café"/>
-        <div class="img-badge">
-          <strong>2018</strong>
-          <span>Fundado</span>
-        </div>
-      </div>
       <div class="reveal reveal-delay-1">
         <p class="section-label">Nossa História</p>
         <h2 class="section-title">A Jornada em Busca da <em>Xícara Perfeita</em></h2>
         <div class="divider"></div>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-muted); line-height:1.8; margin-bottom:16px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--text-muted); line-height:1.5; margin-bottom:16px;">
           O CiOFF nasceu da obsessão de encontrar cafés que contassem histórias. Cada grão escolhido a dedo, cada torra calibrada com atenção quase científica.
         </p>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-muted); line-height:1.8; margin-bottom:32px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.5rem; color:var(--text-muted); line-height:1.5; margin-bottom:32px;">
           Hoje, o CiOFF é referência em café de origem única, com uma rede de produtores parceiros que compartilham nosso compromisso com qualidade e sustentabilidade.
         </p>
         <a href="#" class="btn-link">Conheça nossa história <span>→</span></a>
+      </div>
+      <div class="img-collage reveal">
+        <img class="img-main" src="img/img_home/img_pedro.svg" alt="Café sendo preparado"/>
+        <div class="img-badge">
+          <strong>"O café revela quem o conduz"</strong>
+          <span>Pedro Lima - Fundador</span>
+        </div>
       </div>
     </div>
   </section>
@@ -87,18 +88,18 @@
       <div class="section-header reveal">
         <p class="section-label">Cafés de Origem Única</p>
         <h2 class="section-title">A Geografia em <em>Cada Xícara</em></h2>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:1.1rem; color:var(--text-muted); max-width:540px; margin:16px auto 0;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--text-muted); max-width:1500px; margin:16px auto 0;">
           Cada café é escolhido a dedo, vindo de produtores que compartilham nossa paixão pela qualidade e sustentabilidade.
         </p>
       </div>
       <div class="coffee-grid">
         <div class="coffee-card reveal reveal-delay-1">
-          <img src="https://images.unsplash.com/photo-1504630083234-14187a9df0f5?w=600&q=80" alt="Etiópia Yirgacheffe"/>
+          <img src="img/img_produtos/xic_italia.svg" alt="Etiópia Yirgacheffe"/>
           <div class="coffee-card-body">
             <p class="region">Etiópia · Yirgacheffe</p>
             <h3>Yirgacheffe Natural</h3>
             <span class="tag">Edição Limitada</span>
-            <p style="margin-top:10px;">Floral, amora, champanhe. Torra clara que exalta o terroir único desta região etíope.</p>
+            <p style="margin-top:10px; font-size: 1.2rem;">Floral, amora, champanhe. Torra clara que exalta o terroir único desta região etíope.</p>
           </div>
           <div class="coffee-card-footer">
             <span class="coffee-price">R$ 62,00 · 250g</span>
@@ -106,12 +107,12 @@
           </div>
         </div>
         <div class="coffee-card reveal reveal-delay-2">
-          <img src="https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=600&q=80" alt="Mantiqueira Reserva"/>
+          <img src="img/img_produtos/xic_pais2.svg" alt="Mantiqueira Reserva"/>
           <div class="coffee-card-body">
             <p class="region">Brasil · Mantiqueira</p>
             <h3>Mantiqueira Reserva</h3>
             <span class="tag">Mais Vendido</span>
-            <p style="margin-top:10px;">Chocolate amargo, caramelo, nozes. Corpo pleno e acidez equilibrada da Serra da Mantiqueira.</p>
+            <p style="margin-top:10px; font-size: 1.2rem;">Chocolate amargo, caramelo, nozes. Corpo pleno e acidez equilibrada da Serra da Mantiqueira.</p>
           </div>
           <div class="coffee-card-footer">
             <span class="coffee-price">R$ 48,00 · 250g</span>
@@ -119,12 +120,12 @@
           </div>
         </div>
         <div class="coffee-card reveal reveal-delay-3">
-          <img src="https://images.unsplash.com/photo-1511537190424-bbbab87ac5eb?w=600&q=80" alt="Geisha Limited"/>
+          <img src="img/img_produtos/xic_pais3.svg" alt="Geisha Limited"/>
           <div class="coffee-card-body">
             <p class="region">Panamá · Boquete</p>
             <h3>Geisha Limited</h3>
             <span class="tag">Raro</span>
-            <p style="margin-top:10px;">Jasmim, pêssego branco, mel. A variedade mais valorizada do mundo, em torra artesanal.</p>
+            <p style="margin-top:10px; font-size: 1.2rem;">Jasmim, pêssego branco, mel. A variedade mais valorizada do mundo, em torra artesanal.</p>
           </div>
           <div class="coffee-card-footer">
             <span class="coffee-price">R$ 148,00 · 100g</span>
@@ -139,16 +140,14 @@
   </section>
 
   <!-- ===== CLUBE DE ASSINATURA ===== -->
-  <section id="clube" style="padding:120px 0;">
-    <div class="container" style="display:grid; grid-template-columns:1fr 1fr; gap:80px; align-items:center;">
-      <div class="clube-img reveal">
-        <img src="https://images.unsplash.com/photo-1521302080334-4bebac2763a6?w=800&q=80" alt="Assinatura de café"/>
-      </div>
+  <section id="clube" style="padding: 50px;">
+    <div class="club-bg"></div>
+    <div class="container">
       <div class="clube-text reveal reveal-delay-1">
         <p class="section-label">Aventura do Club</p>
         <h2 class="section-title">A Surpresa Perfeita,<br/><em>Entre Que Todo Mês.</em></h2>
         <div class="divider"></div>
-        <p style="font-family:'Cormorant Garamond',serif; font-size:1.05rem; color:var(--text-muted); line-height:1.8; margin-bottom:8px;">
+        <p style="font-family:'Cormorant Garamond',serif; font-size:1.4rem; color:var(--text-muted); line-height:1.8; margin-bottom:8px;">
           Assine e receba mensalmente cafés raros selecionados por nossos especialistas — com notas de torra, origem e receitas exclusivas.
         </p>
         <ul class="checklist">
