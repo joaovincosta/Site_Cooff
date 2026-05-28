@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>COOFF — Cafés Especiais</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body class="loja-page">
+
+  <!-- ===== NAV (reutiliza .nav do style.css) ===== -->
+  <nav id="loja-nav">
+    <a href="index.html" class="nav-logo" style="text-decoration:none; display:flex; align-items:center; gap:10px;">
+      <svg class="logo-mark" viewBox="0 0 44 44" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="22" cy="22" r="21" stroke="rgba(231,175,124,0.7)" stroke-width="1.2"/>
+        <circle cx="22" cy="22" r="6" fill="rgba(231,175,124,0.9)"/>
+        <path d="M22 8 C14 14 14 30 22 36 C30 30 30 14 22 8Z" stroke="rgba(231,175,124,0.5)" stroke-width="1" fill="none"/>
+      </svg>
+      <span class="logo-wordmark">C<span>O</span>OFF</span>
+    </a>
+
+    <ul class="nav-links">
+      <li><a href="#">Cafés</a></li>
+      <li><a href="#" class="active">Loja</a></li>
+      <li><a href="#">Assinatura</a></li>
+      <li><a href="#">Degustação</a></li>
+      <li><a href="#">Cursos &amp; Workshops</a></li>
+      <li><a href="#">Blog</a></li>
+    </ul>
+
+    <div class="nav-actions">
+      <a href="#" class="nav-cart-btn" aria-label="Sacola">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M6 2L3 6v14a2 2 0 002 2h14a2 2 0 002-2V6l-3-4z"/>
+          <line x1="3" y1="6" x2="21" y2="6"/>
+          <path d="M16 10a4 4 0 01-8 0"/>
+        </svg>
+        <span class="nav-cart-count">2</span>
+      </a>
+      <a href="login.html" aria-label="Conta">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
+          <path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/>
+          <circle cx="12" cy="7" r="4"/>
+        </svg>
+      </a>
+    </div>
+  </nav>
+
+  <!-- ===== HERO DA LOJA ===== -->
+  <header class="loja-hero">
+    <div class="loja-hero-bg"></div>
+    <div class="loja-hero-content container">
+      <p class="section-label">Curadoria exclusiva</p>
+      <h1 class="loja-hero-title">Cafés <em>Especiais</em></h1>
+      <p class="loja-hero-desc">
+        Uma curadoria minuciosa dos melhores grãos do Brasil, torrados
+        artesanalmente para destacar as notas sensoriais exclusivas de cada terroir.
+      </p>
+    </div>
+  </header>
+
+  <!-- ===== ÁREA PRINCIPAL DA LOJA ===== -->
+  <main class="loja-main">
+    <div class="container">
+
+      <!-- Filtros -->
+      <div class="loja-filtros">
+        <div class="loja-filtros-left">
+          <button class="loja-filtro-btn active" data-filter="todos">Todos</button>
+          <button class="loja-filtro-btn" data-filter="bebidas">Bebidas</button>
+          <button class="loja-filtro-btn" data-filter="cafes">Cafés</button>
+          <button class="loja-filtro-btn" data-filter="descafeinados">Descafeinados</button>
+          <button class="loja-filtro-btn" data-filter="acessorios">Acessórios</button>
+        </div>
+        <div class="loja-filtros-right">
+          <div class="loja-ordem-wrap">
+            <label class="loja-ordem-label">Ordenar por</label>
+            <select class="loja-ordem-select">
+              <option>Relevância</option>
+              <option>Menor preço</option>
+              <option>Maior preço</option>
+              <option>Novidades</option>
+            </select>
+            <svg class="loja-ordem-arrow" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <span class="loja-count">15 produtos</span>
+        </div>
+      </div>
+
+      <!-- Grid de produtos -->
+      <div class="loja-grid" id="loja-grid">
+
+        <!-- Card 1 — bebida -->
+        <article class="loja-card reveal" data-category="bebidas">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?w=600&q=80" alt="Cappuccino Etiópia" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Cappuccino Especial</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 48<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Card 2 — bebida -->
+        <article class="loja-card reveal reveal-delay-1" data-category="bebidas">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1572442388796-11668a67e53d?w=600&q=80" alt="Mocha Etiópia" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Mocha Reserva</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 52<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Card 3 — LIMITED -->
+        <article class="loja-card reveal reveal-delay-2" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1461023058943-07fcbe16d735?w=600&q=80" alt="Geisha Limited" class="loja-card-img" />
+            <span class="loja-card-tag">Limited</span>
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Geisha Limited</p>
+            <h3 class="loja-card-nome">Geisha Especial</h3>
+            <p class="loja-card-notas">Notas: floral, pêssego, champagne</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 89<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Card 4 — bebida -->
+        <article class="loja-card reveal reveal-delay-3" data-category="bebidas">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1570968915860-54d5c301fa9f?w=600&q=80" alt="Latte Etiópia" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Latte Artesanal</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 44<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Card 5 — café (maior, featured) -->
+        <article class="loja-card loja-card--wide reveal" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=900&q=80" alt="Etiópia café" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Espresso Etiópia Clássico</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 58<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Card 6 — café destaque com hover ativo na screenshot -->
+        <article class="loja-card loja-card--hover reveal reveal-delay-1" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=600&q=80" alt="Mantiqueira Reserve" class="loja-card-img" />
+            <div class="loja-card-hover loja-card-hover--visible">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Mantiqueira Reserve</p>
+            <h3 class="loja-card-nome">Mantiqueira Reserve</h3>
+            <p class="loja-card-notas">Notas: cacau, caramelo, damasco</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 72<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Card 7 — Geisha -->
+        <article class="loja-card reveal reveal-delay-2" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80" alt="Geisha Limited" class="loja-card-img" />
+            <span class="loja-card-tag">Limited</span>
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Geisha Limited</p>
+            <h3 class="loja-card-nome">Geisha Panamenho</h3>
+            <p class="loja-card-notas">Notas: floral, pêssego, champagne</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 98<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Cards de pacotes (linha 3) -->
+        <article class="loja-card reveal" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=600&q=80" alt="Pacote Etiópia" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Pacote Etiópia</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 62<small>,00</small></p>
+          </div>
+        </article>
+
+        <article class="loja-card reveal reveal-delay-1" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1587049352846-4a222e784d38?w=600&q=80" alt="Pacote Reserva" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Pacote Reserva</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 66<small>,00</small></p>
+          </div>
+        </article>
+
+        <article class="loja-card reveal reveal-delay-2" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80" alt="Pacote Premium" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Pacote Premium</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 74<small>,00</small></p>
+          </div>
+        </article>
+
+        <article class="loja-card reveal reveal-delay-3" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1497515114629-f71d768fd07c?w=600&q=80" alt="Pacote Ouro" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Pacote Ouro</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 68<small>,00</small></p>
+          </div>
+        </article>
+
+        <!-- Linha 4 — acessórios -->
+        <article class="loja-card reveal" data-category="acessorios">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80" alt="Prensa Francesa" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Prensa Francesa</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 120<small>,00</small></p>
+          </div>
+        </article>
+
+        <article class="loja-card reveal reveal-delay-1" data-category="acessorios">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348?w=600&q=80" alt="Cápsulas" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Cápsulas Artesanais</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 38<small>,00</small></p>
+          </div>
+        </article>
+
+        <article class="loja-card reveal reveal-delay-2" data-category="acessorios">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1606791405792-1004f1718d0c?w=600&q=80" alt="Chocolate ao Café" class="loja-card-img" />
+            <span class="loja-card-tag">Novo</span>
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Geisha Limited</p>
+            <h3 class="loja-card-nome">Chocolate ao Café</h3>
+            <p class="loja-card-notas">Notas: floral, pêssego, champagne</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 56<small>,00</small></p>
+          </div>
+        </article>
+
+        <article class="loja-card reveal reveal-delay-3" data-category="cafes">
+          <div class="loja-card-img-wrap">
+            <img src="https://images.unsplash.com/photo-1524350876685-274059332603?w=600&q=80" alt="Grãos Especiais" class="loja-card-img" />
+            <div class="loja-card-hover">
+              <button class="loja-card-add-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+                Adicionar à Sacola
+              </button>
+            </div>
+          </div>
+          <div class="loja-card-body">
+            <p class="loja-card-origem">Etiópia Yirgacheffe</p>
+            <h3 class="loja-card-nome">Grãos Especiais</h3>
+            <p class="loja-card-notas">Notas: Jasmin, bergamota, mel</p>
+            <p class="loja-card-opcoes">Opções: grão e moído <span class="loja-card-peso">250gr</span></p>
+          </div>
+          <div class="loja-card-footer">
+            <div class="loja-card-intensidade">
+              <span class="loja-intensidade-label">Intensidade</span>
+              <div class="loja-stars">
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot filled"></span>
+                <span class="loja-dot"></span>
+                <span class="loja-dot"></span>
+              </div>
+            </div>
+            <p class="loja-card-preco">R$ 54<small>,00</small></p>
+          </div>
+        </article>
+
+      </div><!-- /loja-grid -->
+
+      <!-- Paginação / carregar mais -->
+      <div class="loja-mais">
+        <button class="btn btn-outline loja-mais-btn">
+          Ver mais produtos
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ===== BANNER SVG (ilustração — igual à landing) ===== -->
+  <div class="loja-banner-svg">
+    <svg viewBox="0 0 1440 220" xmlns="http://www.w3.org/2000/svg" class="loja-svg-wave" preserveAspectRatio="xMidYMid slice">
+      <rect width="1440" height="220" fill="rgba(231,175,124,0.04)"/>
+      <!-- grãos decorativos -->
+      <ellipse cx="120" cy="140" rx="28" ry="18" fill="none" stroke="rgba(231,175,124,0.25)" stroke-width="1.5" transform="rotate(-20 120 140)"/>
+      <ellipse cx="120" cy="140" rx="1" ry="16" fill="rgba(231,175,124,0.2)" transform="rotate(-20 120 140)"/>
+      <ellipse cx="300" cy="80" rx="22" ry="14" fill="none" stroke="rgba(231,175,124,0.18)" stroke-width="1.2" transform="rotate(15 300 80)"/>
+      <ellipse cx="300" cy="80" rx="1" ry="12" fill="rgba(231,175,124,0.15)" transform="rotate(15 300 80)"/>
+      <ellipse cx="520" cy="170" rx="32" ry="20" fill="none" stroke="rgba(231,175,124,0.22)" stroke-width="1.5" transform="rotate(-10 520 170)"/>
+      <ellipse cx="720" cy="60" rx="26" ry="16" fill="none" stroke="rgba(231,175,124,0.3)" stroke-width="1.5" transform="rotate(30 720 60)"/>
+      <ellipse cx="720" cy="60" rx="1" ry="14" fill="rgba(231,175,124,0.22)" transform="rotate(30 720 60)"/>
+      <ellipse cx="950" cy="150" rx="30" ry="19" fill="none" stroke="rgba(231,175,124,0.2)" stroke-width="1.5" transform="rotate(-25 950 150)"/>
+      <ellipse cx="1150" cy="90" rx="24" ry="15" fill="none" stroke="rgba(231,175,124,0.18)" stroke-width="1.2" transform="rotate(10 1150 90)"/>
+      <ellipse cx="1380" cy="160" rx="28" ry="18" fill="none" stroke="rgba(231,175,124,0.22)" stroke-width="1.5" transform="rotate(-15 1380 160)"/>
+      <!-- splash waves -->
+      <path d="M600 200 Q660 120 720 160 Q780 200 840 130 Q900 60 960 110 Q1020 160 1080 100" fill="none" stroke="rgba(231,175,124,0.15)" stroke-width="1.5"/>
+      <path d="M0 180 Q80 100 160 150 Q240 200 320 120 Q400 40 480 90" fill="none" stroke="rgba(231,175,124,0.12)" stroke-width="1.2"/>
+      <!-- círculos de vapor -->
+      <circle cx="400" cy="50" r="8" fill="none" stroke="rgba(231,175,124,0.12)" stroke-width="1"/>
+      <circle cx="400" cy="35" r="5" fill="none" stroke="rgba(231,175,124,0.09)" stroke-width="1"/>
+      <circle cx="840" cy="40" r="10" fill="none" stroke="rgba(231,175,124,0.12)" stroke-width="1"/>
+      <circle cx="1200" cy="55" r="7" fill="none" stroke="rgba(231,175,124,0.1)" stroke-width="1"/>
+      <!-- pontos ornamentais -->
+      <circle cx="200" cy="110" r="3" fill="rgba(231,175,124,0.3)"/>
+      <circle cx="650" cy="185" r="2.5" fill="rgba(231,175,124,0.25)"/>
+      <circle cx="1050" cy="70" r="3" fill="rgba(231,175,124,0.28)"/>
+      <circle cx="1300" cy="130" r="2" fill="rgba(231,175,124,0.2)"/>
+    </svg>
+  </div>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-logo" style="text-decoration:none; display:flex; align-items:center; gap:8px; margin-bottom:16px;">
+          <svg width="28" height="28" viewBox="0 0 44 44" fill="none">
+            <circle cx="22" cy="22" r="21" stroke="rgba(231,175,124,0.7)" stroke-width="1.2"/>
+            <circle cx="22" cy="22" r="6" fill="rgba(231,175,124,0.9)"/>
+          </svg>
+          <span class="logo-wordmark" style="font-size:22px;">C<span>O</span>OFF</span>
+        </a>
+        <p>Uma experiência sensorial dedicada ao café especial. Da xícara à origem, do gosto ao ritual.</p>
+      </div>
+      <div class="footer-col">
+        <h5>Navegação</h5>
+        <ul>
+          <li><a href="#">Cafés</a></li>
+          <li><a href="#">Loja</a></li>
+          <li><a href="#">Assinatura</a></li>
+          <li><a href="#">Degustação</a></li>
+          <li><a href="#">Experiências</a></li>
+          <li><a href="#">Blog</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Fique por dentro das novidades!<br>Nos siga nas redes sociais</h5>
+        <div class="footer-social-icons" style="margin-top:16px;">
+          <a href="#" aria-label="Instagram">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></svg>
+          </a>
+          <a href="#" aria-label="Twitter/X">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 COOFF. Todos os direitos reservados.</p>
+      <div class="social-links">
+        <a href="#">Política de Privacidade</a>
+        <a href="#">Termos de Uso</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    /* ===== NAV scroll ===== */
+    const nav = document.getElementById('loja-nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('scrolled', window.scrollY > 40);
+    });
+
+    /* ===== Filtros ===== */
+    const filtros = document.querySelectorAll('.loja-filtro-btn');
+    const cards   = document.querySelectorAll('.loja-card');
+    const countEl = document.querySelector('.loja-count');
+
+    filtros.forEach(btn => {
+      btn.addEventListener('click', () => {
+        filtros.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const filter = btn.dataset.filter;
+        let visible = 0;
+
+        cards.forEach(card => {
+          const match = filter === 'todos' || card.dataset.category === filter;
+          card.style.display = match ? '' : 'none';
+          if (match) visible++;
+        });
+
+        countEl.textContent = visible + ' produto' + (visible !== 1 ? 's' : '');
+      });
+    });
+
+    /* ===== Scroll reveal ===== */
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add('visible');
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+  </script>
+
+</body>
+</html>
