@@ -207,6 +207,7 @@ nav {
   align-items: center;
   justify-content: space-between;
   background: linear-gradient(to bottom, rgba(26,10,13,0.95) 0%, transparent 100%);
+
 }
 nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 
@@ -237,7 +238,7 @@ nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 .hero-content { text-align: center; ;position: relative; z-index: 2; padding: 0 40px 100px; max-width: 900px; animation: fadeUp 1s 0.3s both; }
 .hero-content h1 { text-align: center; font-family: 'Playfair Display', serif; font-size: clamp(2rem, 6vw, 4rem); font-weight: 600; line-height: 1.1; color: var(--cream); margin-bottom: 24px; }
 .hero-content h1 em { color: rgba(223, 140, 64, 1); }
-.hero-content p { margin: auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #ffffff; line-height: 1.2; max-width: 650px; }
+.hero-content p { margin: auto; text-align: center; font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; color: #ffffff ; line-height: 1.2; max-width: 650px; }
 .hero-badges { display: flex; gap: 32px; margin-top: 48px; }
 .hero-badge { text-align: center; display: flex; flex-direction: column; }
 .hero-badge strong { font-family: 'Playfair Display', serif; font-size: 2rem; color: var(--gold); }
