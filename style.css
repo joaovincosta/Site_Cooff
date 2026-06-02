@@ -211,7 +211,16 @@ nav {
 }
 nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 
-.nav-links { display: flex; gap: 36px; list-style: none; }
+.menu-btn {
+  color: #ffffff;
+  display: none;
+  background: none;
+  border: none;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.nav-links { display: flex; gap: 25px; list-style: none; }
 .nav-links a, .nav-actions a {
   font-size: 13px;
   font-weight: 500;
@@ -1317,6 +1326,33 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 }
 @media (max-width: 1000px) {
   .img-collage .img-badge { bottom: 10px; left: -20px;}
+
+    .menu-btn{
+    display: block;
+  }
+
+  .nav-links a {
+    color: #291c00;
+  }
+
+  .nav-links a:hover {
+    color: rgba(83, 0, 36, 1);
+  }
+
+  .nav-links {
+    display: none;
+    flex-direction: column;
+    position: absolute;
+    top: 80px;
+    right: 20px;
+    background: rgba(255, 255, 255, 0.76);
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .nav-links.ativo{
+    display: flex;
+  }
 }
 @media (max-width: 920px) {
   .img-collage .img-badge { bottom: 50px; left: -20px;}
@@ -1328,10 +1364,16 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   .img-collage .img-badge { bottom: 100px; left: -20px;}
 }
 @media (max-width: 768px) {
+
   .img-badge {display: none;}
+  .img-collage {display: none;}
 
   .aula-page { height: auto; overflow: visible; }
   .dash-layout { flex-direction: column; height: auto; overflow: visible; }
+
+  .historia .container {
+    grid-template-columns: 1fr !important;
+  };
 
   .curso-sidebar {
     width: 100%;
@@ -1435,7 +1477,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   font-size: 1.1rem;
   color: rgba(240,230,208,0.75);
   line-height: 1.75;
-  max-width: 380px;
+  max-width: 300px;
   margin-bottom: 40px;
 }
 
@@ -1745,7 +1787,6 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 
 @media (max-width: 600px) {
 
-  .img-collage {display: none;}
 
   .clube-hero-content { padding: 100px 24px 64px; }
   .clube-hero-title   { font-size: clamp(2.4rem, 12vw, 3.5rem); }

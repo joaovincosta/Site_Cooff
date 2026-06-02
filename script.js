@@ -15,3 +15,10 @@
       });
     }, { threshold: 0.12 });
     reveals.forEach(el => observer.observe(el));
+
+  const menuBtn = document.getElementById("menuBtn");
+  const menu = document.getElementById("menu");
+
+  menuBtn.addEventListener("click", () => {
+      menu.classList.toggle("ativo");
+  });
