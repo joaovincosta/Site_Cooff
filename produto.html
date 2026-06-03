@@ -12,9 +12,9 @@
   <link rel="stylesheet" href="style.css" />
 </head>
 
-<body class="produto-page">
+<body class="produto-page" style="background: var(--wine-dark);  color: white;">
 
-  <nav id="navbar">
+  <nav id="navbar>
     <a href="#" class="nav-logo">
       <img src="img/logo.svg" alt="logo COOFF" style="max-width: 100px;">
     </a>
@@ -23,7 +23,7 @@
       ☰
     </button>
 
-    <ul class="nav-links" id="menu">
+    <ul class="nav-links" id="menu" style="font-family: 'DM Sans', sans-serif;">
       <li><a href="index.html">Home</a></li>
       <li><a href="produtos.html">Cafés</a></li>
       <li><a href="clube.html">Assinatura</a></li>
@@ -47,11 +47,11 @@
     </div>
   </nav>
 
-  <main class="produto-main container">
+  <main class="produto-main container" style="margin-top: 80px; margin-bottom: 80px;">
     <div class="produto-layout">
 
       <div class="produto-galeria">
-        <img src="https://images.unsplash.com/photo-1559056199-641a0ac8b55e?w=800&q=80" alt="Blend Sweetheart Embalagem" class="produto-img-sq" />
+        <img src="img/img_produtos/cafe_mogiana.svg" alt="Blend Sweetheart Embalagem" class="produto-img-sq" />
         <img src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=800&q=80" alt="Blend Sweetheart Grãos" class="produto-img-land" />
       </div>
 
@@ -138,8 +138,8 @@
         </div>
 
         <div class="produto-buy-actions">
-          <button class="produto-buy-btn">Adicionar na Cesta</button>
-          <button class="produto-buy-btn">Finalizar Compra</button>
+          <button class="produto-buy-btn" onclick="window.location.href='checkout.html'">Adicionar na Cesta</button>
+          <button class="produto-buy-btn" onclick="window.location.href='checkout.html'">Finalizar Compra</button>
         </div>
 
       </div>
@@ -190,6 +190,6 @@
     </div>
   </footer>
 
-
+  <script src="script.js"></script>
 </body>
 </html>

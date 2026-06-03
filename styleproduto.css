@@ -1,7 +1,16 @@
 body.produto-page {
   background-color: var(--bg-dark-burgundy);
   color: var(--text-white);
-  font-family: var(--font-sans);
+  font-family: 'Cormorant Garamond', serif;
+}
+h1, h2,h3{
+  text-align: center;
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 6vw, 4rem);
+  font-weight: 600;
+  line-height: 1.1;
+  color: var(--cream);
+  margin-bottom: 24px;
 }
 
 .produto-main {
@@ -48,7 +57,7 @@ body.produto-page {
 }
 
 .produto-title {
-  font-family: var(--font-serif-title);
+  font-family: 'Playfair Display', serif;
   font-size: 40px;
   font-weight: 400;
   margin: 0;
@@ -88,7 +97,7 @@ body.produto-page {
 }
 
 .produto-desc-text {
-  font-size: 13px;
+  font-size: 1.1rem;
   line-height: 1.6;
   color: var(--text-white);
   margin: 0;
@@ -105,7 +114,7 @@ body.produto-page {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 12px;
+  font-size: 16px;
 }
 
 .produto-spec-label {
@@ -202,7 +211,7 @@ body.produto-page {
 
 .produto-buy-btn {
   flex: 1;
-  background-color: #6a361c; /* Tom marrom quente da imagem */
+  background-color: var(--gold); /* Tom marrom quente da imagem */
   border: 1px solid rgba(231, 175, 124, 0.2);
   color: var(--text-white);
   padding: 16px;
@@ -215,7 +224,7 @@ body.produto-page {
 }
 
 .produto-buy-btn:hover {
-  background-color: #824222;
+  background-color: #f8a342;
   transform: translateY(-2px);
 }
 
