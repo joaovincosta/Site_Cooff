@@ -480,12 +480,12 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   position: relative;
   overflow: hidden;
   min-height: 100vh;
-  background: url('https://images.unsplash.com/photo-1511920170033-f8396924c348?w=1400&q=80') center/cover no-repeat;
+  background: url('img/img_reservaWorkshop.svg') center/cover no-repeat;
 }
 .reserva-photo-overlay {
   position: absolute; inset: 0;
   background:
-    linear-gradient(to right, rgba(10,4,6,0.78) 40%, rgba(92,17,34,0.55) 100%),
+    linear-gradient(to right, rgba(10, 4, 6, 0.445) 0%, rgba(92, 17, 35, 0.445) 100%),
     linear-gradient(to top,   rgba(10,4,6,0.6)  0%, transparent 50%);
 }
 .reserva-photo-content { position: relative; z-index: 2; padding: 72px 56px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
