@@ -153,8 +153,8 @@ h2.section-title em { font-style: italic; color: var(--gold); }
   padding: 16px;
   border-radius: 50px;
   border: none;
-  background: var(--gold-light);
-  color: var(--wine-deep);
+  background: rgba(223, 140, 64, 1);
+  color: rgba(83, 0, 36, 1);
   font-size: 13px;
   font-weight: 700;
   letter-spacing: 3px;
@@ -322,7 +322,7 @@ nav.scrolled { background: rgba(24, 1, 6, 0.527); }
 .curso-card-overlay h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--cream); margin-bottom: 8px; }
 .curso-card-overlay p  { font-family: 'Cormorant Garamond', serif; font-size: 0.95rem; color: var(--text-muted); margin-bottom: 16px; }
 
-#barista { padding: 100px 0; }
+#barista { padding: 100px 0; background: rgb(83, 0, 36, 1); }
 .barista-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 48px; }
 .barista-post { display: grid; grid-template-columns: 1.2fr 1fr; gap: 48px; align-items: center; }
 .barista-post img { width: 100%; height: 380px; object-fit: cover; border-radius: 2px; filter: sepia(10%) brightness(0.85); }
@@ -386,8 +386,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 .photo-panel::before {
   content: '';
   position: absolute; inset: 0;
-  background: url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=1400&q=80') center/cover no-repeat;
-  filter: grayscale(60%) brightness(0.55);
+  background: url('img/img_criarconta.svg') center/cover no-repeat;
   transform: scale(1.04);
   animation: slowZoom 14s ease-out forwards;
 }
@@ -455,7 +454,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 .forgot-row a:hover { color: var(--gold); }
 
 .register-row { text-align: center; margin-top: 28px; font-size: 13px; color: var(--text-muted); animation: fadeUp 0.6s 0.62s both; }
-.register-row a { color: var(--gold-light); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+.register-row a { color: rgba(223, 140, 64, 1); text-decoration: none; font-weight: 500; transition: color 0.2s; }
 .register-row a:hover { color: var(--cream); }
 
 /* ============================================================
