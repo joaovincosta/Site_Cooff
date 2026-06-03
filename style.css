@@ -2191,7 +2191,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   font-family: 'Playfair Display', serif;
   font-size: 2rem;
   font-weight: 700;
-  color: var(--gold-light);
+  color: whitesmoke;
   line-height: 1;
 }
 
@@ -2205,7 +2205,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   padding: 16px 24px;
   border-radius: 4px;
   border: none;
-  background: var(--gold-light);
+  background: var(--gold) ;
   color: var(--wine-deep);
   font-family: 'DM Sans', sans-serif;
   font-size: 11px;
