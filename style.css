@@ -491,7 +491,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 .reserva-photo-content { position: relative; z-index: 2; padding: 72px 56px; display: flex; flex-direction: column; justify-content: flex-end; height: 100%; }
 .reserva-photo-content h1 { font-family: 'Playfair Display', serif; font-size: clamp(3rem, 6vw, 5rem); font-weight: 700; color: var(--cream); line-height: 1.05; margin-bottom: 32px; animation: fadeUp 0.7s 0.1s both; }
 .reserva-photo-content h1 em { font-style: italic; color: var(--gold); font-weight: 400; }
-.reserva-photo-content p { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; color: rgba(240,230,208,0.8); line-height: 1.75; max-width: 480px; animation: fadeUp 0.7s 0.25s both; }
+.reserva-photo-content p { font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: rgba(240,230,208,0.8); line-height: 1.75; max-width: 480px; animation: fadeUp 0.7s 0.25s both; }
 
 /*
   BUG #6 — .reserva-form-panel tinha overflow-y: auto mas não tinha
