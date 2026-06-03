@@ -2264,7 +2264,7 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
 /* Garante que o body da página de cursos mantenha a base */
 body.cursos-page {
   background-color: var(--wine-dark);
-  color: var(--text-white);
+  color: var(--text-muted);
   font-family: var(--font-sans);
 }
 
@@ -2308,7 +2308,7 @@ body.cursos-page {
 /* --- ESTILO DO CARD --- */
 .curso-card {
   background-color: var(--card-bg);
-  border: 2px solid rgba(231, 175, 124, 0.15);
+  border: 1px solid var(--gold);
   border-radius: 4px;
   overflow: hidden;
   display: flex;
