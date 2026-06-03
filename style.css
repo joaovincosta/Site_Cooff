@@ -2257,6 +2257,198 @@ footer { background: var(--dark); padding: 60px 40px 32px; border-top: 1px solid
   gap: 8px;
 }
 
+/* ==========================================================================
+   COOFF — CURSOS & WORKSHOPS CSS
+   ========================================================================== */
+
+/* Garante que o body da página de cursos mantenha a base */
+body.cursos-page {
+  background-color: var(--wine-dark);
+  color: var(--text-white);
+  font-family: var(--font-sans);
+}
+
+/* --- HERO SECTION --- */
+.cursos-hero {
+  padding: 80px 0 60px;
+  text-align: center;
+}
+
+.cursos-hero-title {
+  font-family: var(--font-serif-title);
+  font-size: 52px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0 0 24px 0;
+}
+
+.cursos-hero-title em {
+  color: var(--accent-gold);
+  font-style: normal;
+}
+
+.cursos-hero-desc {
+  font-family: var(--font-sans);
+  font-size: 16px;
+  max-width: 650px;
+  margin: 0 auto;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+/* --- GRID DE CURSOS --- */
+.cursos-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  padding-bottom: 60px;
+}
+
+/* --- ESTILO DO CARD --- */
+.curso-card {
+  background-color: var(--card-bg);
+  border: 2px solid rgba(231, 175, 124, 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.curso-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  border-color: rgba(231, 175, 124, 0.4);
+}
+
+/* Configuração do Destaque Largo */
+.curso-card--wide {
+  grid-column: span 2;
+}
+
+.curso-card-img-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9; /* Mantém a proporção retangular da imagem */
+  overflow: hidden;
+}
+
+/* O card largo pode ter uma altura menor em proporção à largura para não ficar gigante */
+.curso-card--wide .curso-card-img-wrap {
+  aspect-ratio: 21 / 9;
+}
+
+.curso-card-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s ease;
+  /* Simulação do efeito granulado/ruído visto no print, misturando com uma cor base */
+  filter: contrast(1.1) saturate(1.2); 
+}
+
+.curso-card:hover .curso-card-img {
+  transform: scale(1.03);
+}
+
+.curso-tag {
+  position: absolute;
+  top: 20px;
+  left: 20px;
+  background-color: rgba(255,255,255,0.15);
+  backdrop-filter: blur(4px);
+  color: var(--text-white);
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  padding: 6px 14px;
+  border-radius: 20px;
+  border: 1px solid rgba(255,255,255,0.2);
+}
+
+.curso-card-body {
+  padding: 32px;
+  background-color: var(--card-bg-burgundy);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.curso-card-nome {
+  font-family: var(--font-serif-title);
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+  color: var(--text-white);
+}
+
+.curso-card-desc {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin: 0 0 32px 0;
+  flex-grow: 1;
+}
+
+.curso-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid rgba(231, 175, 124, 0.1);
+  padding-top: 20px;
+  margin-top: auto;
+}
+
+.curso-info {
+  font-size: 13px;
+  color: var(--text-white);
+  font-weight: 500;
+}
+
+.curso-link {
+  color: var(--accent-gold);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: opacity 0.3s ease;
+}
+
+.curso-link:hover {
+  opacity: 0.7;
+}
+
+/* --- RESPONSIVIDADE --- */
+@media (max-width: 992px) {
+  .cursos-grid {
+    gap: 20px;
+  }
+  .curso-card-body {
+    padding: 24px;
+  }
+}
+
+@media (max-width: 768px) {
+  .cursos-hero-title {
+    font-size: 36px;
+  }
+  
+  .cursos-grid {
+    grid-template-columns: 1fr; /* Tudo em 1 coluna no mobile */
+  }
+
+  .curso-card--wide {
+    grid-column: span 1; /* Retira o span 2 no mobile */
+  }
+
+  .curso-card--wide .curso-card-img-wrap {
+    aspect-ratio: 16 / 9; /* Volta para a proporção normal */
+  }
+}
+
 /* Reutiliza .footer-social-label e .footer-social-icons da assinatura */
 
 /* ===== RESPONSIVIDADE ===== */
